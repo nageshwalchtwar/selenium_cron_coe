@@ -62,7 +62,7 @@ options = [
 for option in options:
     chrome_options.add_argument(option)
 # Load the updated YAML file
-with open('COE-Testing/lab_data.yaml', 'r') as file:
+with open('lab_data.yaml', 'r') as file:
     actions = yaml.safe_load(file)
 
 
