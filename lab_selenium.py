@@ -71,7 +71,7 @@ with open('lab_data.yaml', 'r') as file:
 def process_video_frames(driver: webdriver.Chrome, video_xpath: str):
     global move
     screenshot_paths = []
-    total_screenshots, interval = 10, 2
+    total_screenshots, interval = 10, 1
     video_element = driver.find_element(By.XPATH, video_xpath)
 
     for i in range(total_screenshots):
@@ -204,7 +204,7 @@ def perform_action(element):
 
 # Load the website
 driver.get('https://remote-labs.in')
-time.sleep(5)
+time.sleep(3)
 # Perform the actions specified in the YAML file
 for action in actions:
     print(action)
