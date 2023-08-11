@@ -42,11 +42,11 @@ jobs:
       - name: Start Xvfb
         run: Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
         
-#       - name: Making lab_latency & direction file writable to github workflow
-#         run:  chmod +w COE-Testing/lab_latency.log
+      - name: Making lab_latency & direction file writable to github workflow
+        run:  chmod +w lab_latency.log
 
       - name: Running the Timing script
         run: python lab_timing.py
         
-      # - name: Running rod direction
-      #   run: python rod_direction_lab.py
+      - name: Running rod direction
+        run: python bounding_box.py
