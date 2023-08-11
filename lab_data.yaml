@@ -31,7 +31,7 @@
   action: process_video_frames
 
 - locator_strategy: xpath
-  locator_value: //*[contains(text(), 'Exit Experiment')]
+  locator_value: //*[@id="root"]/div/div/div/div[1]/div/div[3]/div[3]/button[2]
   action: click
 # - locator_strategy: xpath
 #   locator_value: //*[contains(text(), 'Exit Experiment')]
