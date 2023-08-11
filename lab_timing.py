@@ -11,6 +11,13 @@ print(arr)
 arr = [datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S') for date_str in arr]
 
 
+# moving down click ka timestamp
+moving_down  = datetime.strptime(lab_selenium.d_movement, '%Y-%m-%d %H:%M:%S')
+print(moving_down)
+status = ""
+start_index = 0
+end_index = 9
+
 #importing data from the log files 
 log_file_path= "lab_latency.log"
 
@@ -28,12 +35,7 @@ matches= re.findall(pattern,log_data)
 for match in matches:
     timestamp, latency=match
     
-# moving down click ka timestamp
-moving_down  = datetime.strptime(lab_selenium.d_movement, '%Y-%m-%d %H:%M:%S')
-print(moving_down)
-status = ""
-start_index = 0
-end_index = 9
+
 mail_service=lab_selenium.handle_prompt
 def check_latency(screenshot_paths): 
     still_count = 0
