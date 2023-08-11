@@ -1,0 +1,52 @@
+name: Run Selenium On GitHub Action
+
+# on:
+#   schedule:
+#     - cron: '0 * * * *' 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checking out repo
+        uses: actions/checkout@v3
+
+      - name: Setting up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Removing previous chrome instances on runner 
+        run: sudo apt purge google-chrome-stable
+      - name: Remove default Chromium
+        run: sudo apt purge chromium-browser
+      - name: Install a new Chromium
+        run: sudo apt install -y chromium-browser
+      - name: Removing opencv-python
+        run: pip uninstall opencv-python
+        
+      - name: Installing opencv-headless
+        run: pip install opencv-python-headless
+        
+      - name: Installing all necessary packages
+        run: |
+          pip install selenium pyyaml pillow imagehash python-dotenv scikit-image webdriver-manager matplotlib
+
+      - name: Install xvfb
+        run: sudo apt-get install xvfb
+
+      - name: Start Xvfb
+        run: Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+        
+      - name: Making lab_latency & direction file writable to github workflow
+        run:  chmod +w COE-Testing/lab_latency.log
+
+      - name: Running the Timing script
+        run: python COE-Testing/lab_timing.py
+        
+      # - name: Running rod direction
+      #   run: python rod_direction_lab.py
