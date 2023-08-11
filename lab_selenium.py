@@ -150,7 +150,7 @@ def perform_action(element):
             pass
         # Add more locator strategies if needed
     except NoSuchElementException:
-        web_element= driver.find_element(By.XPATH,"//*[contains(text(),'Exit Experiment')]")
+        web_element= driver.find_element(By.XPATH,'//*[@id="root"]/div/div/div/div[1]/div/div[3]/div[3]/button[2]')
         web_element.click()
         print("Testing ended abruptly!!!")
 
