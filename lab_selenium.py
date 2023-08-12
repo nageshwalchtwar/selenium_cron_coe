@@ -103,17 +103,18 @@ def send_email(person, body, email_subject):
     # Set the email parameters
     msg['Subject'] = 'RTL issue'
     msg['From'] = email_sender
-    msg['To'] = person
-
+    msg['To'] = ', '.join(recipients)  # Join the list of recipients
+    
     # Send the email
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL('smtp.gmail.com', context=context) as smtp:
+        recipients = ["nageshwalchtwar257@gmail.com", "vedant.nipane@students.iiit.ac.in","rishabh.agrawal@students.iiit.ac.in","abhinav.marri@research.iiit.ac.in"]
         smtp.login(email_sender, email_password)
-        smtp.sendmail(email_sender, email_receiver, msg.as_string())
+        smtp.sendmail(email_sender, recipients, msg.as_string())
 
 def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
     if prompt_text == "Experiment is currently offline":
-        body = "Experiment is currently offline"
+        body = "Experiment is currently offline (COE)"
         if email_recipient and email_subject:
             send_email(email_recipient, body, email_subject)
         try:
