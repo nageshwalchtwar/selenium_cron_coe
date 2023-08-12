@@ -58,11 +58,11 @@ def compare_images_in_folder(folder_path):
         cv2.drawContours(img1, contours1, -1, (0, 0, 255), 2)
         cv2.drawContours(img2, contours2, -1, (0, 0, 255), 2)
         
-        # Display the images with contours
-        cv2.imshow("Image 1", img1)
-        cv2.imshow("Image 2", img2)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        # # Display the images with contours
+        # cv2.imshow("Image 1", img1)
+        # cv2.imshow("Image 2", img2)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
     else:
         print("No dissimilar image pairs found in the folder")
 
