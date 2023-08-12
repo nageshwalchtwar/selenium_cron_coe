@@ -203,16 +203,19 @@ if movement_code == "still" or movement_code == 0:
                 The experiment is stucked or Video stream not available during the process.
                 kindly check the experiment.
                 - Maintenance Team ( RTL - SPCRC )
+
+
                 
-                This is a script generated alert, do not reply to it.''', 'mail sent')
+       This is a script generated alert, do not reply to it.''', 'mail sent')
 
 elif movement_code == 'moving' or movement_code == 1:
     logging.info('Working Fine.\n')
-    recipients = ["nageshwalchtwar257@gmail.com", "theccbussiness@gmail.com"]
+    recipients = ["theccbussiness@gmail.com"]
     send_email(recipients, '''Hi, I'm COE, experiment working fine.
                 - Maintenance Team ( RTL - SPCRC )
+
                 
-                This is a script generated alert, do not reply to it.''', 'mail sent')
+        This is a script generated alert, do not reply to it.''', 'mail sent')
 
 
 
