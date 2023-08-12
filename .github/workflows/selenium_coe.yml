@@ -45,8 +45,8 @@ jobs:
       - name: Making lab_latency & direction file writable to github workflow
         run:  chmod +w lab_latency.log
 
-      - name: Running the Timing script
-        run: python lab_timing.py
+      # - name: Running the Timing script
+      #   run: python lab_timing.py
         
       - name: Running rod direction
-        run: python bounding_box.py
+        run: python bonding_box.py
