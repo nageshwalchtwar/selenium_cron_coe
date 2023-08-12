@@ -30,7 +30,7 @@ def send_email(person, body, email_subject):
     # Set the email parameters
     msg['Subject'] = 'RTL - Maintainance update ( COE )'
     msg['From'] = email_sender
-    msg['To'] = person
+    msg['To'] = ', '.join(recipients)  # Join the list of recipients
 
     # Send the email
     context = ssl.create_default_context()
@@ -195,19 +195,24 @@ print(comp)
 #     else:
 #         logging.debug("Error, check system ASAP!")
 print(chk_latency)  
-if movement_code== "still"  or movement_code==0:
-    logging.warning('still\n')    
-    send_email("nageshwalchtwar257@gmail.com,theccbussiness@gmail.com", '''Hi, I'm COE,
-                                                Experiment is having some issue,
-                                                The exp stucked or Video stream not available during the process. 
-                                                kindly check the experiment 
-                                                    - Maintainance Team (COE) ''', 'mail sent')
+if movement_code == "still" or movement_code == 0:
+    logging.warning('still\n')
+    recipients = ["nageshwalchtwar257@gmail.com", "vedant.nipane@students.iiit.ac.in","rishabh.agrawal@students.iiit.ac.in","abhinav.marri@research.iiit.ac.in"]
+    send_email(recipients, '''Hi, I'm COE,
+                Experiment is having some issue,
+                The experiment is stucked or Video stream not available during the process.
+                kindly check the experiment.
+                - Maintenance Team ( RTL - SPCRC )
+                
+                This is a script generated alert, do not reply to it.''', 'mail sent')
 
-elif movement_code== 'moving' or movement_code == 1:
+elif movement_code == 'moving' or movement_code == 1:
     logging.info('Working Fine.\n')
-    send_email("nageshwalchtwar257@gmail.com,theccbussiness@gmail.com", '''Hi,I'm COE, experiment working fine. 
-                - Maintainance Team ( COE ) ''' , 'mail sent')
-
+    recipients = ["nageshwalchtwar257@gmail.com", "theccbussiness@gmail.com"]
+    send_email(recipients, '''Hi, I'm COE, experiment working fine.
+                - Maintenance Team ( RTL - SPCRC )
+                
+                This is a script generated alert, do not reply to it.''', 'mail sent')
 
 
 
