@@ -30,8 +30,8 @@ def check_latency(screenshot_paths):
     # Iterate over consecutive pairs of screenshots
     for i in range(start_index, end_index, 2):
         # Load the current and next screenshots
-        current_image = 'moving_down_lab/screenshot_{}.png'.format(i)
-        next_image = 'moving_down_lab/screenshot_{}.png'.format(i + 1)
+        current_image = 'moving_ahead/screenshot_{}.png'.format(i)
+        next_image = 'moving_ahead/screenshot_{}.png'.format(i + 1)
         print(current_image)
         print(next_image)
 
@@ -61,8 +61,8 @@ def check_latency(screenshot_paths):
             if flag != 1:
                 if i < end_index:
                     timestamp1 = arr[i + 1]
-                    current_image = 'moving_down_lab/screenshot_{}.png'.format(i)
-                    next_image = 'moving_down_lab/screenshot_{}.png'.format(i + 1)
+                    current_image = 'moving_ahead/screenshot_{}.png'.format(i)
+                    next_image = 'moving_ahead/screenshot_{}.png'.format(i + 1)
                 if not (os.path.exists(current_image) and os.path.exists(next_image)):
                     print(f"Error: Some screenshot files are missing. Skipping iteration {i}.")
                     continue
