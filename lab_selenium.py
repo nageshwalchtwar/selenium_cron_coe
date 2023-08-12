@@ -163,6 +163,7 @@ def perform_action(element):
         #     web_element[2].click()
         # else:
         if locator_value == "//*[contains(text(), 'Start Experiment')]" :
+            global d_movement
             d_movement = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             web_element.click()
         elif locator_value == "Conservation of Mechanical Energy":
