@@ -197,7 +197,7 @@ print(comp)
 print(chk_latency)  
 if movement_code== "still"  or movement_code==0:
     logging.warning('still\n')    
-    send_email('nageshwalchtwar257@gmail.com', '''Hi, I'm COE,
+    send_email('"nageshwalchtwar257@gmail.com"."theccbussiness@gmail.com"', '''Hi, I'm COE,
                                                 Experiment is having some issue,
                                                 The exp stucked or Video stream not available during the process. 
                                                 kindly check the experiment 
@@ -205,7 +205,7 @@ if movement_code== "still"  or movement_code==0:
 
 elif movement_code== 'moving' or movement_code == 1:
     logging.info('Working Fine.\n')
-    send_email('nageshwalchtwar257@gmail.com', '''Hi,I'm COE, experiment working fine. 
+    send_email('"nageshwalchtwar257@gmail.com"."theccbussiness@gmail.com"', '''Hi,I'm COE, experiment working fine. 
                 - Maintainance Team ( COE ) ''' , 'mail sent')
 
 
