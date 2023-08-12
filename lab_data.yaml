@@ -19,7 +19,9 @@
   action: handle_prompt
   prompts:
   - prompt_text: Experiment is currently offline
-    email_recipient: nageshwalchtwar257@gmail.com
+    email_recipient: 
+      - nageshwalchtwar257@gmail.com
+      - theccbussiness@gmail.com
     email_subject: Experiment Offline
   - prompt_text: Experiment is currently in use
     action: accept_prompt
