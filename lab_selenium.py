@@ -113,7 +113,7 @@ def send_email(person, body, email_subject):
         smtp.sendmail(email_sender, recipients, msg.as_string())
 
 def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
-    if prompt_text == "Experiment is currently offline":
+    if prompt_text == "Experiment is currently offline" or prompt_text == "Experiment is currently in use":
         body = "Experiment is currently offline (COE)"
         if email_recipient and email_subject:
             send_email(email_recipient, body, email_subject)
