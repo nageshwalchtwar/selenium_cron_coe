@@ -197,7 +197,7 @@ print(comp)
 print(chk_latency)  
 if movement_code == "still" or movement_code == 0:
     logging.warning('still\n')
-    recipients = ["nageshwalchtwar257@gmail.com", "vedant.nipane@students.iiit.ac.in","rishabh.agrawal@students.iiit.ac.in","abhinav.marri@research.iiit.ac.in"]
+    recipients = ["nageshwalchtwar257@gmail.com"]
     send_email(recipients, '''Hi, I'm COE,
                 Experiment is having some issue,
                 The experiment is stucked or Video stream not available during the process.
