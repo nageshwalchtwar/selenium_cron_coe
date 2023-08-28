@@ -63,6 +63,7 @@ def compare_images_in_folder(folder_path):
         # cv2.imshow("Image 2", img2)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
+        return min_similarity
     else:
         print("No dissimilar image pairs found in the folder")
 
