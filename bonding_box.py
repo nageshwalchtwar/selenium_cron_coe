@@ -183,6 +183,8 @@ movement_code = compare_images(image1, image2)
 # print("Movement code:", movement_code)
 
 print(comp)
+if comp>98:
+    movement_code=1
 
 
 # l= f"moving_ahead/"
