@@ -132,7 +132,7 @@ ss_paths = ss_4_lab.ss_paths
 
 if movement_code == 0:
     logging.warning('still\n')
-    recipients = ["nageshwalchtwar257@gmail.com"]
+    recipients = ["nageshwalchtwar257@gmail.com", "vedant.nipane@students.iiit.ac.in","rishabh.agrawal@students.iiit.ac.in","abhinav.marri@research.iiit.ac.in"]
     send_email(recipients, '''Hi, I'm COE,
                 Experiment is having some issue,the experiment is stucked or Video stream is not available during the process.
                 kindly check the experiment.
