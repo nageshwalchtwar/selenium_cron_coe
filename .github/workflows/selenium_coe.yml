@@ -5,6 +5,10 @@ name: Run Selenium COE
 #     - cron: '0 * * * *' 
 
 on:
+  schedule:
+    - cron: '0 18 * * *'
+
+on:
   workflow_dispatch:
 
 jobs:
