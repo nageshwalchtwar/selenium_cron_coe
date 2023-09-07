@@ -132,6 +132,8 @@ ss_paths = ss_4_lab.ss_paths
 
 if movement_code == 0:
     logging.warning('still\n')
+    global status 
+    status = "Not Working"
     recipients = ["nageshwalchtwar257@gmail.com", "vedant.nipane@students.iiit.ac.in","rishabh.agrawal@students.iiit.ac.in","abhinav.marri@research.iiit.ac.in"]
     send_email(recipients, '''Hi, I'm COE,
                 Experiment is having some issue,the experiment is stucked or Video stream is not available during the process.
@@ -144,6 +146,7 @@ if movement_code == 0:
 
 elif  movement_code == 1:
     logging.info('Working Fine.\n')
+    status = "working"
     recipients = ["theccbussiness@gmail.com"]
     send_email(recipients, '''Hi, I'm COE, experiment working fine.
                 - Maintenance Team ( RTL - SPCRC )
@@ -151,6 +154,18 @@ elif  movement_code == 1:
                 
         This is a script generated alert, do not reply to it.''', 'mail sent')
 
+import json
 
+data = {
+    "value": status
+}
+
+with open('data.json', 'w') as json_file:
+    json.dump(data, json_file)
+
+# Add, commit, and push the changes
+subprocess.run(["git", "add", "data.json"])
+subprocess.run(["git", "commit", "-m", "Update data.json"])
+subprocess.run(["git", "push", "origin", "main"]) 
 
 
