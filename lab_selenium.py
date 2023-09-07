@@ -228,7 +228,7 @@ for action in actions:
     }
 
     with open('data.json', 'w') as json_file:
-    json.dump(data, json_file)
+        json.dump(data, json_file)
 
     # Add, commit, and push the changes
     subprocess.run(["git", "add", "data.json"])
