@@ -147,7 +147,7 @@ if movement_code == 0:
 
 elif  movement_code == 1:
     logging.info('Working Fine.\n')
-    status = "working"
+    status = "Working"
     recipients = ["theccbussiness@gmail.com"]
     send_email(recipients, '''Hi, I'm COE, experiment working fine.
                 - Maintenance Team ( RTL - SPCRC )
