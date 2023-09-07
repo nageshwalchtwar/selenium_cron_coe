@@ -40,7 +40,7 @@ def update_timestamps(new_timestamp):
     timestamps.append(new_timestamp)
 
 
-
+global status 
 
 
 load_dotenv()
@@ -116,6 +116,7 @@ def send_email(person, body, email_subject):
 def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
     if prompt_text == "Experiment is currently offline" or prompt_text == "Experiment is currently in use":
         body = "Experiment is currently offline (COE)"
+        status = "OFFLINE"
         if email_recipient and email_subject:
             send_email(email_recipient, body, email_subject)
         try:
@@ -124,6 +125,7 @@ def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
             pass
         return True  # Set the flag to True indicating prompt is handled
     elif prompt_text == "Experiment is currently in use":
+        status ="In Use"
         driver.switch_to.alert.accept()
         return True  # Set the flag to True indicating prompt is handled
     return False  # Return False if prompt is not handled
@@ -213,5 +215,23 @@ for action in actions:
     print(action)
     if total <= 1:
         total += 1
+        status = "Working"
+    else:
+        status = "Not working or OFFLINE"
+        
+        
     perform_action(action)
+    import json
+
+    data = {
+        "value": status
+    }
+
+    with open('data.json', 'w') as json_file:
+    json.dump(data, json_file)
+
+    # Add, commit, and push the changes
+    subprocess.run(["git", "add", "data.json"])
+    subprocess.run(["git", "commit", "-m", "Update data.json"])
+    subprocess.run(["git", "push", "origin", "main"]) 
     time.sleep(2)
