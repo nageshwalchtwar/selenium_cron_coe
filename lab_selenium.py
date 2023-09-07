@@ -29,7 +29,7 @@ import datetime
 import imagehash
 from dotenv import load_dotenv
 from skimage.metrics import structural_similarity as ssim
-
+import json
 # timestamps.py
 move = 0
 timestamps = []
@@ -221,7 +221,7 @@ for action in actions:
         
         
     perform_action(action)
-    import json
+
 
     data = {
         "value": status
