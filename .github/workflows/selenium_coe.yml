@@ -2,7 +2,7 @@ name: Run Selenium COE
 
 # on:
 #   schedule:
-#     - cron: '0 */2 * * *'
+#     - cron: '0 */1 * * *'
 
 # on:
 #   schedule:
@@ -53,8 +53,8 @@ jobs:
           git config --global user.name "Nagesh Walchatwar"
           git config --global user.email "nageshw.etc19@stvincentnngp.edu.in"
 
-      # - name: Running the Timing script
-      #   run: python lab_timing.py
+      - name: Running the Timing script
+        run: python lab_timing.py
         
       - name: Running ball moving
         run: python bonding_box.py
