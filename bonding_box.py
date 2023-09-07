@@ -8,6 +8,7 @@ from email.message import EmailMessage
 import ssl
 import smtplib
 import time
+import subprocess
 
 import ss_4_lab
 # import every_image_cmp
