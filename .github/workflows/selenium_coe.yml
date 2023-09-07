@@ -1,15 +1,15 @@
 name: Run Selenium COE
 
-on:
-  schedule:
-    - cron: '0 */2 * * *'
+# on:
+#   schedule:
+#     - cron: '0 */2 * * *'
 
 # on:
 #   schedule:
 #     - cron: '23 11 * * *'
 
-# on:
-#   workflow_dispatch:
+on:
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -48,6 +48,10 @@ jobs:
         
       - name: Making lab_latency & direction file writable to github workflow
         run:  chmod +w lab_latency.log
+      - name: Configure Git
+        run: |
+          git config --global user.name "Nagesh Walchatwar"
+          git config --global user.email "nageshw.etc19@stvincentnngp.edu.in"
 
       - name: Running the Timing script
         run: python lab_timing.py
