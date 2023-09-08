@@ -211,6 +211,8 @@ def perform_action(element):
 # Load the website
 driver.get('https://remote-labs.in')
 time.sleep(3)
+global message 
+message = msg
 # Perform the actions specified in the YAML file
 for action in actions:
     print(action)
@@ -218,7 +220,7 @@ for action in actions:
         total += 1
         status = "Working"
     else:
-        status = msg
+        status = message 
         
         
     perform_action(action)
