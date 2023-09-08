@@ -114,10 +114,22 @@ def send_email(person, body, email_subject):
         smtp.login(email_sender, email_password)
         smtp.sendmail(email_sender, recipients, msg.as_string())
 
-def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
+def handle_prompt(prompt_text, email_recipient=None, email_subject=None,msg):
     if prompt_text == "Experiment is currently offline" or prompt_text == "Experiment is currently in use":
         body = "Experiment is currently offline (COE)"
         msg = "OFFLINE"
+            data = {
+            "value": status
+        }
+
+        with open('data.json', 'w') as json_file:
+            json.dump(data, json_file)
+
+        # Add, commit, and push the changes
+        subprocess.run(["git", "add", "data.json"])
+        subprocess.run(["git", "commit", "-m", "Update data.json"])
+        subprocess.run(["git", "push", "origin", "main"]) 
+
         if email_recipient and email_subject:
             send_email(email_recipient, body, email_subject)
         try:
@@ -128,6 +140,18 @@ def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
     elif prompt_text == "Experiment is currently in use":
         msg ="In Use - Script will execute after some time "
         driver.switch_to.alert.accept()
+            data = {
+                "value": status
+            }
+
+        with open('data.json', 'w') as json_file:
+            json.dump(data, json_file)
+
+        # Add, commit, and push the changes
+        subprocess.run(["git", "add", "data.json"])
+        subprocess.run(["git", "commit", "-m", "Update data.json"])
+        subprocess.run(["git", "push", "origin", "main"]) 
+
         return True  # Set the flag to True indicating prompt is handled
     return False  # Return False if prompt is not handled
 
@@ -211,8 +235,7 @@ def perform_action(element):
 # Load the website
 driver.get('https://remote-labs.in')
 time.sleep(3)
-global message 
-message = msg
+
 # Perform the actions specified in the YAML file
 for action in actions:
     print(action)
@@ -220,7 +243,7 @@ for action in actions:
         total += 1
         status = "Working"
     else:
-        status = message 
+        status = "Not working or OFFLINE"
         
         
     perform_action(action)
