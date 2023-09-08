@@ -118,7 +118,7 @@ def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
     if prompt_text == "Experiment is currently offline" or prompt_text == "Experiment is currently in use":
         body = "Experiment is currently offline (COE)"
         msg = "OFFLINE"
-            data = {
+        data = {
             "value": msg
         }
 
@@ -140,9 +140,9 @@ def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
     elif prompt_text == "Experiment is currently in use":
         msg ="In Use - Script will execute after some time "
         driver.switch_to.alert.accept()
-            data = {
+        data = {
                 "value": msg
-            }
+        }
 
         with open('data.json', 'w') as json_file:
             json.dump(data, json_file)
