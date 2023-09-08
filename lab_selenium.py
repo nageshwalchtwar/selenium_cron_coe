@@ -41,6 +41,7 @@ def update_timestamps(new_timestamp):
 
 
 global status 
+global msg 
 
 
 load_dotenv()
@@ -116,7 +117,7 @@ def send_email(person, body, email_subject):
 def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
     if prompt_text == "Experiment is currently offline" or prompt_text == "Experiment is currently in use":
         body = "Experiment is currently offline (COE)"
-        status = "OFFLINE"
+        msg = "OFFLINE"
         if email_recipient and email_subject:
             send_email(email_recipient, body, email_subject)
         try:
@@ -125,7 +126,7 @@ def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
             pass
         return True  # Set the flag to True indicating prompt is handled
     elif prompt_text == "Experiment is currently in use":
-        status ="In Use"
+        msg ="In Use - Script will execute after some time "
         driver.switch_to.alert.accept()
         return True  # Set the flag to True indicating prompt is handled
     return False  # Return False if prompt is not handled
@@ -217,7 +218,7 @@ for action in actions:
         total += 1
         status = "Working"
     else:
-        status = "Not working or OFFLINE"
+        status = msg
         
         
     perform_action(action)
