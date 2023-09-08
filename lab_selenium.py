@@ -114,12 +114,12 @@ def send_email(person, body, email_subject):
         smtp.login(email_sender, email_password)
         smtp.sendmail(email_sender, recipients, msg.as_string())
 
-def handle_prompt(prompt_text, email_recipient=None, email_subject=None,msg):
+def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
     if prompt_text == "Experiment is currently offline" or prompt_text == "Experiment is currently in use":
         body = "Experiment is currently offline (COE)"
         msg = "OFFLINE"
             data = {
-            "value": status
+            "value": msg
         }
 
         with open('data.json', 'w') as json_file:
@@ -141,7 +141,7 @@ def handle_prompt(prompt_text, email_recipient=None, email_subject=None,msg):
         msg ="In Use - Script will execute after some time "
         driver.switch_to.alert.accept()
             data = {
-                "value": status
+                "value": msg
             }
 
         with open('data.json', 'w') as json_file:
