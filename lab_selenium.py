@@ -41,7 +41,7 @@ def update_timestamps(new_timestamp):
 
 
 global status 
-global msg 
+global msgs 
 
 
 load_dotenv()
@@ -117,9 +117,9 @@ def send_email(person, body, email_subject):
 def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
     if prompt_text == "Experiment is currently offline" or prompt_text == "Experiment is currently in use":
         body = "Experiment is currently offline (COE)"
-        msg = "OFFLINE"
+        msgs = "OFFLINE"
         data = {
-            "value": msg
+            "value": msgs
         }
 
         with open('data.json', 'w') as json_file:
@@ -138,10 +138,10 @@ def handle_prompt(prompt_text, email_recipient=None, email_subject=None):
             pass
         return True  # Set the flag to True indicating prompt is handled
     elif prompt_text == "Experiment is currently in use":
-        msg ="In Use - Script will execute after some time "
+        msgs ="In Use - Script will execute after some time "
         driver.switch_to.alert.accept()
         data = {
-                "value": msg
+                "value": msgs
         }
 
         with open('data.json', 'w') as json_file:
