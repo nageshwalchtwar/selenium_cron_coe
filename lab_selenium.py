@@ -95,7 +95,7 @@ def process_video_frames(driver: webdriver.Chrome, video_xpath: str):
     print("detecting motion")
     
 
-def send_email(person, body, email_subject):
+def send_email(person, body, email_subject,recipients=None):
     email_sender = 'rtllab55@gmail.com'
     email_password = 'evyvskiyltlczpaj'
     email_receiver = person
