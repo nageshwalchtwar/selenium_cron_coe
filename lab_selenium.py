@@ -101,7 +101,6 @@ def send_email(person, body, email_subject,recipients=None):
     email_receiver = person
     msg = EmailMessage()
     msg.set_content(body)
-    global recipients
     # Set the email parameters
     msg['Subject'] = 'RTL issue'
     msg['From'] = email_sender
