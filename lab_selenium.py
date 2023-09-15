@@ -30,6 +30,7 @@ import imagehash
 from dotenv import load_dotenv
 from skimage.metrics import structural_similarity as ssim
 import json
+import requests
 # timestamps.py
 move = 0
 timestamps = []
@@ -265,4 +266,8 @@ for action in actions:
         subprocess.run(["git", "add", "data.json"])
         subprocess.run(["git", "commit", "-m", "Update data.json"])
         subprocess.run(["git", "push", "origin", "main"]) 
+    else:
+        print("Check blynk for offline status or usage button")
+        driver.close()
+        break
     time.sleep(2)
