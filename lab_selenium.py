@@ -237,26 +237,32 @@ time.sleep(3)
 
 # Perform the actions specified in the YAML file
 for action in actions:
-    print(action)
-    if total <= 1:
-        total += 1
-        status = "Working"
-    else:
-        status = "Not working or OFFLINE"
+    response = requests.get("https://blynk.cloud/external/api/isHardwareConnected?token=ih9WueVjBqXegKg2efGtVqUVdFRQdhJa")
+    usage = requests.get("https://blr1.blynk.cloud/external/api/get?token=ih9WueVjBqXegKg2efGtVqUVdFRQdhJa&v3")
+    data_online = response.json()
+    data_usage = usage.json()
+    if data_online == False:
+        status = "OFFLINE"
+    if data_usage == 1:
+        status = "In use while running script"
+    if data_online == True and data_usage == 0:
+        print(action)
+        if total <= 1:
+            total += 1
+            status = "Working"
+        else:
+            status = "Not working"
+            
+            
+        perform_action(action)
+    
+
         
-        
-    perform_action(action)
-
-
-    data = {
-        "value": status
-    }
-
-    with open('data.json', 'w') as json_file:
-        json.dump(data, json_file)
-
-    # Add, commit, and push the changes
-    subprocess.run(["git", "add", "data.json"])
-    subprocess.run(["git", "commit", "-m", "Update data.json"])
-    subprocess.run(["git", "push", "origin", "main"]) 
+        with open('data.json', 'w') as json_file:
+            json.dump(data, json_file)
+    
+        # Add, commit, and push the changes
+        subprocess.run(["git", "add", "data.json"])
+        subprocess.run(["git", "commit", "-m", "Update data.json"])
+        subprocess.run(["git", "push", "origin", "main"]) 
     time.sleep(2)
