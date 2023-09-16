@@ -270,6 +270,7 @@ for action in actions:
         subprocess.run(["git", "commit", "-m", "Update data.json"])
         subprocess.run(["git", "push", "origin", "main"]) 
     else:
+        global status 
         data = {
             "value": status
         }
