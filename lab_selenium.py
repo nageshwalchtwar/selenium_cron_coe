@@ -256,6 +256,9 @@ for action in actions:
             
             
         perform_action(action)
+        data = {
+            "value": status
+        }
     
 
         
@@ -267,6 +270,10 @@ for action in actions:
         subprocess.run(["git", "commit", "-m", "Update data.json"])
         subprocess.run(["git", "push", "origin", "main"]) 
     else:
+        data = {
+            "value": status
+        }
+    
         print("Check blynk for offline status or usage button")
         status = "OFFLINE"
         with open('data.json', 'w') as json_file:
