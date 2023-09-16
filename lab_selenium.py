@@ -268,6 +268,14 @@ for action in actions:
         subprocess.run(["git", "push", "origin", "main"]) 
     else:
         print("Check blynk for offline status or usage button")
+        status = "OFFLINE"
+        with open('data.json', 'w') as json_file:
+            json.dump(data, json_file)
+    
+        # Add, commit, and push the changes
+        subprocess.run(["git", "add", "data.json"])
+        subprocess.run(["git", "commit", "-m", "Update data.json"])
+        subprocess.run(["git", "push", "origin", "main"]) 
         driver.close()
         break
     time.sleep(2)
