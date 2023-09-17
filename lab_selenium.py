@@ -246,44 +246,27 @@ for action in actions:
         status = "OFFLINE"
     if data_usage == 1:
         status = "In use while running script"
-    if data_online == True and data_usage == 0:
-        print(action)
-        if total <= 1:
-            total += 1
-            status = "Working"
-        else:
-            status = "Not working"
+    print(action)
+    if total <= 1:
+        total += 1
+        status = "Working"
+    else:
+        status = "Not working"
             
             
-        perform_action(action)
-        data = {
-            "value": status
-        }
+    perform_action(action)
+    data = {
+        "value": status
+    }
     
 
         
-        with open('data.json', 'w') as json_file:
-            json.dump(data, json_file)
+    with open('data.json', 'w') as json_file:
+        json.dump(data, json_file)
     
-        # Add, commit, and push the changes
-        subprocess.run(["git", "add", "data.json"])
-        subprocess.run(["git", "commit", "-m", "Update data.json"])
-        subprocess.run(["git", "push", "origin", "main"]) 
-    else:
-        global status 
-        data = {
-            "value": status
-        }
-    
-        print("Check blynk for offline status or usage button")
-        status = "OFFLINE"
-        with open('data.json', 'w') as json_file:
-            json.dump(data, json_file)
-    
-        # Add, commit, and push the changes
-        subprocess.run(["git", "add", "data.json"])
-        subprocess.run(["git", "commit", "-m", "Update data.json"])
-        subprocess.run(["git", "push", "origin", "main"]) 
-        driver.close()
-        break
+    # Add, commit, and push the changes
+    subprocess.run(["git", "add", "data.json"])
+    subprocess.run(["git", "commit", "-m", "Update data.json"])
+    subprocess.run(["git", "push", "origin", "main"]) 
+
     time.sleep(2)
