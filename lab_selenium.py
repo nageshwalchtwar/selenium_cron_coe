@@ -264,42 +264,14 @@ for action in actions:
         "value": status
     }
     
-# Determine the path to the CSV file in the same directory as the script
-script_directory = os.path.dirname(os.path.abspath(__file__))
-csv_file_path = os.path.join(script_directory, "status_csv.csv")
-
-# Writing data to CSV file
-with open(csv_file_path, mode='a', newline='') as csv_file:
-    fieldnames = ["Name", "CoE Status", "Comments", "Created by", "Created time", "Date"]
-    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
-    # Check if the file is empty, if so, write the header
-    if csv_file.tell() == 0:
-        writer.writeheader()
-
-    # Current date and time
-    current_time = datetime.now().strftime("%B %d, %Y %I:%M %p")
-
-    # Data to be written to the CSV file
-    data = {
-        "Name": "Daily Log: {}".format(current_time),
-        "CoE Status": status,
-        "Comments": "",
-        "Created by": "Vedant Nipane",
-        "Created time": current_time,
-        "Date": current_time
-    }
-
-    # Write the data to the CSV file
-    writer.writerow(data)
 
         
-    # with open('data.json', 'w') as json_file:
-    #     json.dump(data, json_file)
+    with open('data.json', 'w') as json_file:
+        json.dump(data, json_file)
     
-    # # Add, commit, and push the changes
-    # subprocess.run(["git", "add", "data.json"])
-    # subprocess.run(["git", "commit", "-m", "Update data.json"])
-    # subprocess.run(["git", "push", "origin", "main"]) 
+    # Add, commit, and push the changes
+    subprocess.run(["git", "add", "data.json"])
+    subprocess.run(["git", "commit", "-m", "Update data.json"])
+    subprocess.run(["git", "push", "origin", "main"]) 
 
     time.sleep(2)
