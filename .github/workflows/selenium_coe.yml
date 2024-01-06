@@ -38,7 +38,7 @@ jobs:
         
       - name: Installing all necessary packages
         run: |
-          pip install selenium pyyaml pillow imagehash python-dotenv scikit-image webdriver-manager matplotlib csv datetime
+          pip install selenium pyyaml pillow imagehash python-dotenv scikit-image webdriver-manager matplotlib datetime
 
       - name: Install xvfb
         run: sudo apt-get install xvfb
