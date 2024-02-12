@@ -202,7 +202,7 @@ def perform_action(element):
             web_element.click()
         elif locator_value == "Conservation of Mechanical Energy":
             script = """
-            var parentDiv = document.querySelector(".my-10");
+            var parentDiv = document.querySelector("-mt-12");
             parentDiv.style.opacity = '1';
             parentDiv.scrollIntoView(true);
             """
