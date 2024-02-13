@@ -203,12 +203,9 @@ def perform_action(element):
         elif locator_value == "Conservation of Mechanical Energy":
             script = """
             var parentDiv = document.querySelector(".-mt-12");
-            if (parentDiv) {
-                parentDiv.style.opacity = '1';
-                parentDiv.scrollIntoView(true);
-            }
+            parentDiv.style.opacity = '10';
+            parentDiv.scrollIntoView(true);
             """
-
             driver.execute_script(script)
             time.sleep(3)
             button = driver.find_element(By.ID, "Conservation of Mechanical Energy")
