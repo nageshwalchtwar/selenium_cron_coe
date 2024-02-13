@@ -207,11 +207,11 @@ def perform_action(element):
             parentDiv.style.opacity = '10';
             parentDiv.scrollIntoView(true);
             """
-        driver.execute_script(script)
-        time.sleep(3)  # Add a short pause to allow the element to become fully visible
-        button = driver.find_element(By.ID, "Conservation of Mechanical Energy")
-        driver.execute_script("arguments[0].scrollIntoView(true);", button)  # Scroll to the button
-        button.click()  # Click the button
+            driver.execute_script(script)
+            time.sleep(3)  # Add a short pause to allow the element to become fully visible
+            button = driver.find_element(By.ID, "Conservation of Mechanical Energy")
+            driver.execute_script("arguments[0].scrollIntoView(true);", button)  # Scroll to the button
+            button.click()  # Click the button
         else:
             web_element.click()
 
