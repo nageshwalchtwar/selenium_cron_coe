@@ -205,6 +205,7 @@ def perform_action(element):
             var parentDiv = document.querySelector(".-mt-12");
             parentDiv.style.opacity = '10';
             parentDiv.scrollIntoView(true);
+            parentDiv.body.style.zoom='50%';
             """
             driver.execute_script(script)
             time.sleep(3)
