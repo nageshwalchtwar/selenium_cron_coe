@@ -202,7 +202,6 @@ def perform_action(element):
             web_element.click()
         elif locator_value == "Conservation of Mechanical Energy":
             script = """
-            document.documentElement.style.zoom = '30%';
             var parentDiv = document.querySelector(".-mt-12");
             parentDiv.style.opacity = '10';
             parentDiv.scrollIntoView(true);
